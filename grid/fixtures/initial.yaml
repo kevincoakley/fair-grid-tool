@@ -1,0 +1,40 @@
+- model: grid.products
+  pk: 1
+  fields:
+    name: Software
+- model: grid.products
+  pk: 2
+  fields:
+    name: Data
+- model: grid.products
+  pk: 3
+  fields:
+    name: Data Repository
+- model: grid.products
+  pk: 4
+  fields:
+    name: Simulation Data
+- model: grid.products
+  pk: 5
+  fields:
+    name: Notebooks
+- model: grid.products
+  pk: 6
+  fields:
+    name: Models (including benchmarks and surrogates)
+- model: grid.products
+  pk: 7
+  fields:
+    name: Workflows
+- model: grid.products
+  pk: 8
+  fields:
+    name: Papers
+- model: grid.products
+  pk: 9
+  fields:
+    name: Nanopublications
+- model: grid.products
+  pk: 10
+  fields:
+    name: Website

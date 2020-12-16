@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FAIR Grid Tool</title>
+</head>
+<body>
+<h2>FAIR Grid Tool</h2>
+<p>
+Name: {{ project.name }}
+</p>
+<p>
+Products:
+{% for product in object.projectsproducts_set.all %}
+    <li>{{ product }}</li>
+{% endfor %}
+</p>
+<p>
+<a href="{% url 'grid:index' %}">Return to project list</a>
+</p>
+</body>
+</html>
