@@ -2,6 +2,9 @@ name: Python package
 
 on: [push]
 
+env:
+  DEBUG: True
+  SECRET_KEY: 6D020755-E454-4F6B-A639-1B7A230B5ACB
 
 jobs:
   build:
@@ -25,9 +28,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
-      env:
-        DEBUG: True
-        SECRET_KEY: 6D020755-E454-4F6B-A639-1B7A230B5ACB
+
     - name: Generate coverage report
       run: |
         pip install pytest-cov
