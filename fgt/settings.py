@@ -27,7 +27,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 DEBUG = bool(os.environ["DEBUG"])
 print("DEBUG: %s" % DEBUG)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
