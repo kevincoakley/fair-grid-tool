@@ -90,7 +90,7 @@ class AddProjectViewTests(TestCase):
         url = reverse("grid:add")
         response = self.client.post(url, {"name": "Project Name", "product": [1, 2]})
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, "/grid/1/")
+        self.assertEqual(response.url, "/1/")
 
         project = Projects.objects.get(pk=1)
         self.assertEqual(project.name, "Project Name")
