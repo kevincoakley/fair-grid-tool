@@ -1,0 +1,11 @@
+---
+version: '2'
+
+services:
+  app:
+    image: kevincoakley/fair-grid-tool:latest
+    environment:
+      - SECRET_KEY
+    ports:
+      - 8000:8000
+    restart: always
