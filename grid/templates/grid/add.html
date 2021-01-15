@@ -12,11 +12,26 @@
 <form action="" method="post">
     {% csrf_token %}
 
-    <table>
-    {{ project_form }}
+    <p>
+    1. My project/activity will produce the following (referred to below collectively as ‘Products’):
+
     {{ product_form }}
-    </table>
-<input type="submit" value="Submit" />
+    </p>
+
+    <p>
+    1.a. What is the name of your project/activity?
+
+    {{ project_form.name }}
+    </p>
+
+    <p>
+    2. Primary Domain related to the project
+
+    {{ project_form.primary_domain }}
+    </p>
+
+
+    <input type="submit" value="Submit" />
 </form>
 
 </body>

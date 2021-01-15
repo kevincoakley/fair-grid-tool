@@ -38,3 +38,103 @@
   pk: 10
   fields:
     name: Website
+- model: grid.domains
+  pk: 1
+  fields:
+    name: Atmospheric and Space Electricity
+- model: grid.domains
+  pk: 2
+  fields:
+    name: Atmospheric Sciences
+- model: grid.domains
+  pk: 3
+  fields:
+    name: Biogeosciences
+- model: grid.domains
+  pk: 4
+  fields:
+    name: Cryosphere Sciences
+- model: grid.domains
+  pk: 5
+  fields:
+    name: Earth and Planetary Surface Processes
+- model: grid.domains
+  pk: 6
+  fields:
+    name: Earth and Space Science Informatics
+- model: grid.domains
+  pk: 7
+  fields:
+    name: Education
+- model: grid.domains
+  pk: 8
+  fields:
+    name: Geodesy
+- model: grid.domains
+  pk: 9
+  fields:
+    name: GeoHealth
+- model: grid.domains
+  pk: 10
+  fields:
+    name: Geomagnetism, Paleomagnetism and Electromagnetism
+- model: grid.domains
+  pk: 11
+  fields:
+    name: Global Environmental Change
+- model: grid.domains
+  pk: 12
+  fields:
+    name: Hydrology
+- model: grid.domains
+  pk: 13
+  fields:
+    name: Mineral and Rock Physics
+- model: grid.domains
+  pk: 14
+  fields:
+    name: Natural Hazards
+- model: grid.domains
+  pk: 15
+  fields:
+    name: Near-Surface Geophysics
+- model: grid.domains
+  pk: 16
+  fields:
+    name: Nonlinear Geophysics
+- model: grid.domains
+  pk: 17
+  fields:
+    name: Ocean Sciences
+- model: grid.domains
+  pk: 18
+  fields:
+    name: Paleoceanography and Paleoclimatology
+- model: grid.domains
+  pk: 19
+  fields:
+    name: Planetary Sciences
+- model: grid.domains
+  pk: 20
+  fields:
+    name: Seismology
+- model: grid.domains
+  pk: 21
+  fields:
+    name: Science and Society
+- model: grid.domains
+  pk: 22
+  fields:
+    name: Space Physics and Aeronomy
+- model: grid.domains
+  pk: 23
+  fields:
+    name: Study of the Earth’s Deep Interior
+- model: grid.domains
+  pk: 24
+  fields:
+    name: Tectonophysics
+- model: grid.domains
+  pk: 25
+  fields:
+    name: Volcanology, Geochemistry, and Petrology
