@@ -2,14 +2,21 @@ from django.test import TestCase
 from django.urls import reverse
 from django.utils.html import escape
 
-from .models import Projects, Products, ProjectsProducts
+from .models import Domains, Projects, Products, ProjectsProducts
 
 
-def create_project(name):
+def create_domain(name):
+    """
+    Create a domain with the given name
+    """
+    return Domains.objects.create(name=name)
+
+
+def create_project(name, primary_domain):
     """
     Create a project with the given name
     """
-    return Projects.objects.create(name=name)
+    return Projects.objects.create(name=name, primary_domain=primary_domain)
 
 
 def create_product(name):
@@ -44,7 +51,8 @@ class ProjectIndexViewTests(TestCase):
         """
         If a project exists, display the project in the project_list
         """
-        create_project(name="Project Name")
+        domain = create_domain(name="Domain 1")
+        create_project(name="Project Name", primary_domain=domain)
 
         response = self.client.get(reverse("grid:index"))
         self.assertQuerysetEqual(
@@ -84,11 +92,14 @@ class AddProjectViewTests(TestCase):
         """
         Submit the form with currently filled out form and 2 products
         """
+        create_domain(name="Domain 1")
         create_product(name="Product Name 1")
         create_product(name="Product Name 2")
 
         url = reverse("grid:add")
-        response = self.client.post(url, {"name": "Project Name", "product": [1, 2]})
+        response = self.client.post(
+            url, {"name": "Project Name", "product": [1, 2], "primary_domain": "1"}
+        )
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, "/1/")
 
@@ -120,7 +131,8 @@ class ProjectDisplayViewTests(TestCase):
         """
         Verify the product DetailView displays correctly with 2 products
         """
-        project = create_project(name="Project Name")
+        domain = create_domain(name="Domain 1")
+        project = create_project(name="Project Name", primary_domain=domain)
         product_1 = create_product(name="Product Name 1")
         product_2 = create_product(name="Product Name 2")
         join_project_product(project=project, product=product_1)

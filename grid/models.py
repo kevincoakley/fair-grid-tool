@@ -2,8 +2,16 @@ from django.db import models
 from django.forms import ModelForm
 
 
+class Domains(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
 class Projects(models.Model):
     name = models.CharField(max_length=200)
+    primary_domain = models.ForeignKey(Domains, on_delete=models.SET_NULL, null=True)
     submitted = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -32,4 +40,4 @@ class ProjectForm(ModelForm):
 
     class Meta:
         model = Projects
-        fields = ["name"]
+        fields = ["name", "primary_domain"]
