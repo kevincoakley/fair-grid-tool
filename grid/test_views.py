@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.utils.html import escape
 
-from .models import Domains, Projects, Products, ProjectsProducts
+from .models import Domains, ObtainDOI, Projects, Products, ProjectsProducts
 
 
 def create_domain(name):
@@ -12,11 +12,23 @@ def create_domain(name):
     return Domains.objects.create(name=name)
 
 
-def create_project(name, primary_domain):
+def create_obtain_doi(name):
+    """
+    Create a ObtainDOI with the given name
+    """
+    return ObtainDOI.objects.create(name=name)
+
+
+def create_project(name, primary_domain, obtain_doi, obtain_doi_other=""):
     """
     Create a project with the given name
     """
-    return Projects.objects.create(name=name, primary_domain=primary_domain)
+    return Projects.objects.create(
+        name=name,
+        primary_domain=primary_domain,
+        obtain_doi=obtain_doi,
+        obtain_doi_other=obtain_doi_other,
+    )
 
 
 def create_product(name):
@@ -52,7 +64,10 @@ class ProjectIndexViewTests(TestCase):
         If a project exists, display the project in the project_list
         """
         domain = create_domain(name="Domain 1")
-        create_project(name="Project Name", primary_domain=domain)
+        obtain_doi = create_obtain_doi(name="Other")
+        create_project(
+            name="Project Name", primary_domain=domain, obtain_doi=obtain_doi
+        )
 
         response = self.client.get(reverse("grid:index"))
         self.assertQuerysetEqual(
@@ -93,12 +108,19 @@ class AddProjectViewTests(TestCase):
         Submit the form with currently filled out form and 2 products
         """
         create_domain(name="Domain 1")
+        create_obtain_doi(name="Other")
         create_product(name="Product Name 1")
         create_product(name="Product Name 2")
 
         url = reverse("grid:add")
         response = self.client.post(
-            url, {"name": "Project Name", "product": [1, 2], "primary_domain": "1"}
+            url,
+            {
+                "name": "Project Name",
+                "product": [1, 2],
+                "primary_domain": "1",
+                "obtain_doi": "1",
+            },
         )
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, "/1/")
@@ -132,7 +154,14 @@ class ProjectDisplayViewTests(TestCase):
         Verify the product DetailView displays correctly with 2 products
         """
         domain = create_domain(name="Domain 1")
-        project = create_project(name="Project Name", primary_domain=domain)
+        obtain_doi = create_obtain_doi(name="Other")
+        obtain_doi_other = "Other"
+        project = create_project(
+            name="Project Name",
+            primary_domain=domain,
+            obtain_doi=obtain_doi,
+            obtain_doi_other=obtain_doi_other,
+        )
         product_1 = create_product(name="Product Name 1")
         product_2 = create_product(name="Product Name 2")
         join_project_product(project=project, product=product_1)

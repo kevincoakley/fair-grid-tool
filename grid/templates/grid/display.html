@@ -25,6 +25,14 @@ Products:
 Primary Domain: {{ project.primary_domain }}
 </p>
 <p>
+I have a way to obtain a Digital Object Identifier (DOI): {{ project.obtain_doi }}
+</p>
+{% if project.obtain_doi_other and project.obtain_doi_other.strip %}
+<p>
+DOI Other: {{ project.obtain_doi_other }}
+</p>
+{% endif %}
+<p>
 <a href="{% url 'grid:index' %}">Return to project list</a>
 </p>
 </body>

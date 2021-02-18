@@ -138,3 +138,19 @@
   pk: 25
   fields:
     name: Volcanology, Geochemistry, and Petrology
+- model: grid.obtaindoi
+  pk: 1
+  fields:
+    name: From my library / institution
+- model: grid.obtaindoi
+  pk: 2
+  fields:
+    name: Via an organizational membership
+- model: grid.obtaindoi
+  pk: 3
+  fields:
+    name: Zenodo
+- model: grid.obtaindoi
+  pk: 4
+  fields:
+    name: Other (specify)

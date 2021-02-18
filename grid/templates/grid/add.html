@@ -35,9 +35,32 @@
     {{ project_form.primary_domain }}
     </p>
 
+    <p>
+    3. I have a way to obtain a Digital Object Identifier (DOI):
+
+    {{ project_form.obtain_doi }}
+    {{ project_form.obtain_doi_other }}
+    </p>
+
 
     <input type="submit" value="Submit" />
 </form>
+
+<script>
+// Hide all elements that need to be hidden by default
+$( "#id_obtain_doi_other" ).hide();
+
+// Show/Hide obtain_doi_other if Other selected
+$( "#id_obtain_doi" ).change(function() {
+    if ( $( "#id_obtain_doi option:selected" ).val() == "4" ) {
+       $( "#id_obtain_doi_other" ).show();
+       $( "#id_obtain_doi_other" ).prop('required', true);
+    } else {
+        $( "#id_obtain_doi_other" ).hide();
+        $( "#id_obtain_doi_other" ).prop('required', false);
+    }
+});
+</script>
 
 </body>
 </html>

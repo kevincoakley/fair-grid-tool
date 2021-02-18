@@ -9,9 +9,18 @@ class Domains(models.Model):
         return self.name
 
 
+class ObtainDOI(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
 class Projects(models.Model):
     name = models.CharField(max_length=200)
     primary_domain = models.ForeignKey(Domains, on_delete=models.SET_NULL, null=True)
+    obtain_doi = models.ForeignKey(ObtainDOI, on_delete=models.SET_NULL, null=True)
+    obtain_doi_other = models.CharField(max_length=200, null=True, blank=True)
     submitted = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -40,4 +49,4 @@ class ProjectForm(ModelForm):
 
     class Meta:
         model = Projects
-        fields = ["name", "primary_domain"]
+        fields = ["name", "primary_domain", "obtain_doi", "obtain_doi_other"]
